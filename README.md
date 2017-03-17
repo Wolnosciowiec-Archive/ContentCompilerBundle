@@ -34,3 +34,13 @@ some example implementations made.
 
 1. Add to `AppKernel`
 2. Use as a service :-)
+
+Example:
+
+```php
+$page->setContent(
+    $this->contentCompilerFactory
+        ->getContentCompiler($page->getSourceCodeType())
+        ->compileFromString($page->getSourceCode())
+);
+```
