@@ -1,0 +1,22 @@
+services:
+    wolnosciowiec.contentcompiler.factory:
+        class: ContentCompilerBundle\Factory\CompilerFactory
+        arguments:
+            purifier: "@wolnosciowiec.contentcompiler.purifier"
+
+    wolnosciowiec.contentcompiler.purifier:
+        class: ContentCompilerBundle\Service\ContentCompiler\ContentPurifier
+
+    wolnosciowiec.contentcompiler.converter.html:
+        class: ContentCompilerBundle\Service\ContentCompiler\Compiler\HtmlCompiler
+        arguments:
+            purifier: "@wolnosciowiec.contentcompiler.purifier"
+        tags:
+            - { name: wolnosciowiec.contentcompiler }
+
+    wolnosciowiec.contentcompiler.converter.markdown:
+        class: ContentCompilerBundle\Service\ContentCompiler\Compiler\MarkdownCompiler
+        arguments:
+            purifier: "@wolnosciowiec.contentcompiler.purifier"
+        tags:
+            - { name: wolnosciowiec.contentcompiler }

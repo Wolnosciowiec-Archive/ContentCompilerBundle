@@ -1,0 +1,23 @@
+{
+    "name":        "wolnosciowiec/content-compiler-bundle",
+    "description": "Converts everything into HTML",
+    "license":     "LGPLv3",
+    "type":        "symfony-bundle",
+
+    "require": {
+        "php": ">=7.0",
+        "symfony/security": ">=2.8",
+        "erusev/parsedown" : ">=1.5",
+        "ezyang/htmlpurifier" : "~4.7"
+    },
+
+    "require-dev": {
+        "symfony/var-dumper": "*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "ContentCompilerBundle\\": ""
+        }
+    }
+}
