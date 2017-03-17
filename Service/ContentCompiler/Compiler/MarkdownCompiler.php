@@ -48,4 +48,30 @@ class MarkdownCompiler extends AbstractCompiler implements ContentCompilerInterf
     {
         return 'markdown';
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function wouldHandle(string $extension, string $mime): bool
+    {
+        $supportedMimes = [
+            'text/plain',
+            'text/markdown',
+            'text/x-markdown',
+        ];
+
+        $supportedExtensions = [
+            'md', 'txt',
+        ];
+
+        if ($extension) {
+            return in_array(strtolower($extension), $supportedExtensions, true);
+        }
+
+        if ($mime) {
+            return in_array(strtolower($mime), $supportedMimes, true);
+        }
+
+        return false;
+    }
 }

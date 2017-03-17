@@ -26,4 +26,14 @@ interface ContentCompilerInterface
      * @return string
      */
     public function getName(): string;
+
+    /**
+     * Ask the implementation if it can handle specific type of file
+     *
+     * @param string $extension
+     * @param string $mime
+     *
+     * @return bool
+     */
+    public function wouldHandle(string $extension, string $mime): bool;
 }

@@ -9,7 +9,7 @@ use ContentCompilerBundle\Service\ContentCompiler\ContentPurifierInterface;
 class CompilerFactory
 {
     /**
-     * @var array $_compilers
+     * @var ContentCompilerInterface[] $_compilers
      */
     private $_compilers = [];
 
@@ -53,6 +53,23 @@ class CompilerFactory
         }
 
         return $this->_compilers[$name];
+    }
+
+    /**
+     * @param string $extension
+     * @param string $mimeType
+     *
+     * @return ContentCompilerInterface|null
+     */
+    public function getCompilerThatHandles(string $extension, string $mimeType)
+    {
+        foreach ($this->_compilers as $compiler) {
+            if ($compiler->wouldHandle($extension, $mimeType)) {
+                return $compiler;
+            }
+        }
+
+        return null;
     }
 
     private function normalizeName(string $name)

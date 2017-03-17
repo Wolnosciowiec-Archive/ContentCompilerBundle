@@ -30,4 +30,29 @@ class HtmlCompiler extends AbstractCompiler implements ContentCompilerInterface
     {
         return 'html';
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function wouldHandle(string $extension = null, string $mime = null): bool
+    {
+        $supportedMimes = [
+            'text/plain',
+            'text/html',
+        ];
+
+        $supportedExtensions = [
+            'html', 'htm', 'txt',
+        ];
+
+        if ($extension) {
+            return in_array(strtolower($extension), $supportedExtensions, true);
+        }
+
+        if ($mime) {
+            return in_array(strtolower($mime), $supportedMimes, true);
+        }
+
+        return false;
+    }
 }
