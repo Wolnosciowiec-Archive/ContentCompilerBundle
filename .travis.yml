@@ -1,7 +1,17 @@
 language: php
 sudo: false
+
 php:
     - 7.0
+    - 7.1
+    - nightly
+    - hhvm
+
+matrix:
+    allow_failures:
+        - php:
+            - nightly
+            - hhvm
 
 cache:
     directories:
@@ -15,4 +25,4 @@ before_install:
 install: composer update --prefer-dist
 
 script:
-    - ./vendor/bin/phpunit
+    - ./vendor/bin/phpunit --coverage-text
