@@ -17,6 +17,7 @@
         "symfony/security": ">=3.2",
         "symfony/framework-bundle": ">=3.2",
         "symfony/symfony": ">=3.2",
+        "twig/twig": "^2.2",
         "phpunit/phpunit": "~6"
     },
 

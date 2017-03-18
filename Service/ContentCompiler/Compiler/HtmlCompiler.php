@@ -15,10 +15,13 @@ class HtmlCompiler extends AbstractCompiler implements ContentCompilerInterface
     /**
      * @inheritdoc
      */
-    public function compileFromString($string, $strict = false): string
+    public function compileFromString($string, $strict = false, array $parameters = []): string
     {
         $string = $this->getPurifier()->purify($string);
-        $string = $this->getPurifier()->purifyExternalContent($string);
+
+        if ($parameters[self::ESCAPE_LINKS] ?? true) {
+            $string = $this->getPurifier()->purifyExternalContent($string, $strict);
+        }
 
         return $string;
     }

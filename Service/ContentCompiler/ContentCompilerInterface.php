@@ -4,16 +4,22 @@ namespace ContentCompilerBundle\Service\ContentCompiler;
 
 interface ContentCompilerInterface
 {
+    const ESCAPE_LINKS = 'links_escape';
+    const VARIABLES = 'vars';
+    const INCLUDE_PATH = 'include_path';
+    const CACHE_DIR = 'cache_dir';
+
     /**
      * Compile source code text
      * ========================
      *
      * @param string $string
      * @param bool $strict
+     * @param array $parameters
      *
      * @return string
      */
-    public function compileFromString($string, $strict = false) : string;
+    public function compileFromString($string, $strict = false, array $parameters = []) : string;
 
     /**
      * @return ContentPurifierInterface

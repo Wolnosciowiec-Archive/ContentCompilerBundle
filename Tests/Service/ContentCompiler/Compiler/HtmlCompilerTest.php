@@ -5,9 +5,6 @@ namespace Tests\Service\ContentCompiler\Compiler;
 use Tests\TestCase;
 
 /**
- * HtmlCompilerTest
- * ====================
- *
  * @see HtmlCompiler
  */
 class HtmlCompilerTest extends TestCase

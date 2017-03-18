@@ -5,9 +5,6 @@ namespace Tests\Service\ContentCompiler\Compiler;
 use Tests\TestCase;
 
 /**
- * MarkdownCompilerTest
- * ====================
- *
  * @see MarkdownCompiler
  */
 class MarkdownCompilerTest extends TestCase

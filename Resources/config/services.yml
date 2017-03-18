@@ -20,3 +20,10 @@ services:
             purifier: "@wolnosciowiec.contentcompiler.purifier"
         tags:
             - { name: wolnosciowiec.contentcompiler }
+
+    wolnosciowiec.contentcompiler.converter.twig:
+        class: ContentCompilerBundle\Service\ContentCompiler\Compiler\TwigCompiler
+        arguments:
+            purifier: "@wolnosciowiec.contentcompiler.purifier"
+        tags:
+            - { name: wolnosciowiec.contentcompiler }

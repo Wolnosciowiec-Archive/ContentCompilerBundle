@@ -30,13 +30,16 @@ class MarkdownCompiler extends AbstractCompiler implements ContentCompilerInterf
     /**
      * @inheritdoc
      */
-    public function compileFromString($string, $strict = false): string
+    public function compileFromString($string, $strict = false, array $parameters = []): string
     {
         $string = htmlspecialchars($string);
 
         $string = $this->parser->text($string);
         $string = $this->getPurifier()->purify($string);
-        $string = $this->getPurifier()->purifyExternalContent($string, $strict);
+
+        if ($parameters[self::ESCAPE_LINKS] ?? true) {
+            $string = $this->getPurifier()->purifyExternalContent($string, $strict);
+        }
 
         return $string;
     }
