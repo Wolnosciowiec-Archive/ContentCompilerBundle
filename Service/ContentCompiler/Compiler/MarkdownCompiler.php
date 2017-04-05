@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ContentCompilerBundle\Service\ContentCompiler\Compiler;
 
@@ -7,14 +9,12 @@ use ContentCompilerBundle\Service\ContentCompiler\ContentPurifierInterface;
 
 /**
  * MarkdownCompiler
- * ================
- *
- * @package Wolnosciowiec\AppBundle\Service\ContentCompiler\Compiler
+ * ================.
  */
 class MarkdownCompiler extends AbstractCompiler implements ContentCompilerInterface
 {
     /**
-     * @var \Parsedown $parser
+     * @var \Parsedown
      */
     protected $parser;
 
@@ -28,7 +28,7 @@ class MarkdownCompiler extends AbstractCompiler implements ContentCompilerInterf
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function compileFromString($string, $strict = false, array $parameters = []): string
     {
@@ -45,7 +45,7 @@ class MarkdownCompiler extends AbstractCompiler implements ContentCompilerInterf
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getName(): string
     {
@@ -53,7 +53,7 @@ class MarkdownCompiler extends AbstractCompiler implements ContentCompilerInterf
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function wouldHandle(string $extension, string $mime): bool
     {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Service\ContentCompiler\Compiler;
 
@@ -17,18 +19,18 @@ class HtmlCompilerTest extends TestCase
         return [
             [
                 '**not a markdown**',
-                '**not a markdown**'
+                '**not a markdown**',
             ],
 
             [
                 '<strong>this is not escaped</strong>',
-                '<strong>this is not escaped</strong>'
+                '<strong>this is not escaped</strong>',
             ],
 
             [
                 '"text in quotes"',
                 '"text in quotes"',
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ContentCompilerBundle\Service\ContentCompiler;
 
@@ -11,11 +13,11 @@ interface ContentCompilerInterface
 
     /**
      * Compile source code text
-     * ========================
+     * ========================.
      *
      * @param string $string
-     * @param bool $strict
-     * @param array $parameters
+     * @param bool   $strict
+     * @param array  $parameters
      *
      * @return string
      */
@@ -27,14 +29,14 @@ interface ContentCompilerInterface
     public function getPurifier() : ContentPurifierInterface;
 
     /**
-     * Identify self
+     * Identify self.
      *
      * @return string
      */
     public function getName(): string;
 
     /**
-     * Ask the implementation if it can handle specific type of file
+     * Ask the implementation if it can handle specific type of file.
      *
      * @param string $extension
      * @param string $mime
