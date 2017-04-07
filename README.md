@@ -38,9 +38,18 @@ some example implementations made.
 Example:
 
 ```php
-$page->setContent(
-    $this->contentCompilerFactory
-        ->getContentCompiler($page->getSourceCodeType())
-        ->compileFromString($page->getSourceCode())
+
+// twig
+var_dump($this->contentCompilerFactory
+     ->getContentCompiler('twig')
+     ->compileFromString('Monkeys are eating {{ fruitName }}', false, [
+         ContentCompilerInterface::VARIABLES => ['fruitName' => 'banana'],
+     ])
+);
+
+// markdown
+var_dump($this->contentCompilerFactory
+     ->getContentCompiler('markdown')
+     ->compileFromString('# Bananas are everywhere')
 );
 ```
