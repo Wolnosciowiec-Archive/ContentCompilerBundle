@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests;
 
@@ -8,12 +10,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class TestCase extends WebTestCase
 {
     /**
-     * @var ContainerInterface $container
+     * @var ContainerInterface
      */
     protected $container;
 
     /**
-     * Set up a kernel
+     * Set up a kernel.
      */
     protected function setUp()
     {

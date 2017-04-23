@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ContentCompilerBundle\Factory;
 
@@ -9,12 +11,12 @@ use ContentCompilerBundle\Service\ContentCompiler\ContentPurifierInterface;
 class CompilerFactory
 {
     /**
-     * @var ContentCompilerInterface[] $_compilers
+     * @var ContentCompilerInterface[]
      */
     private $_compilers = [];
 
     /**
-     * @var ContentPurifierInterface $contentPurifier
+     * @var ContentPurifierInterface
      */
     private $contentPurifier;
 
@@ -27,14 +29,16 @@ class CompilerFactory
     }
 
     /**
-     * Used by DI container to inject implementations
+     * Used by DI container to inject implementations.
      *
      * @param ContentCompilerInterface $compiler
+     *
      * @return CompilerFactory
      */
     public function addCompiler(ContentCompilerInterface $compiler): CompilerFactory
     {
         $this->_compilers[$this->normalizeName($compiler->getName())] = $compiler;
+
         return $this;
     }
 
@@ -42,6 +46,7 @@ class CompilerFactory
      * @param string $name
      *
      * @throws CompilerNotFoundException
+     *
      * @return ContentCompilerInterface
      */
     public function getContentCompiler($name)
@@ -49,7 +54,7 @@ class CompilerFactory
         $name = $this->normalizeName($name);
 
         if (!isset($this->_compilers[$name])) {
-            throw new CompilerNotFoundException('"' . $name . '" implementation of ContentCompilerInterface not found');
+            throw new CompilerNotFoundException('"'.$name.'" implementation of ContentCompilerInterface not found');
         }
 
         return $this->_compilers[$name];
@@ -68,8 +73,6 @@ class CompilerFactory
                 return $compiler;
             }
         }
-
-        return null;
     }
 
     private function normalizeName(string $name)

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ContentCompilerBundle\Service\ContentCompiler\Compiler;
 
@@ -6,7 +8,7 @@ use ContentCompilerBundle\Exception\SyntaxError;
 use ContentCompilerBundle\Service\ContentCompiler\ContentCompilerInterface;
 
 /**
- * Compiles Twig templates into HTML
+ * Compiles Twig templates into HTML.
  */
 class TwigCompiler extends AbstractCompiler implements ContentCompilerInterface
 {
@@ -14,16 +16,16 @@ class TwigCompiler extends AbstractCompiler implements ContentCompilerInterface
      * Supported parameters:
      *   - self::INCLUDE_PATH Path where to look for templates in case a template has "include" or "extends" tags
      *   - self::CACHE_DIR Where to store the cache in the filesystem
-     *   - self::VARIABLES Variables to assign
+     *   - self::VARIABLES Variables to assign.
      *
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function compileFromString($string, $strict = false, array $parameters = []): string
     {
         $loaders = [
             new \Twig_Loader_Array([
                 'str' => $string,
-            ])
+            ]),
         ];
 
         if (isset($parameters[self::INCLUDE_PATH])) {
@@ -40,14 +42,13 @@ class TwigCompiler extends AbstractCompiler implements ContentCompilerInterface
 
         try {
             return $twig->render('str', $parameters[self::VARIABLES] ?? []);
-
         } catch (\Twig_Error_Syntax $e) {
-            throw new SyntaxError('Syntax error while compiling from string, details: ' . $e->getMessage(), 0, $e);
+            throw new SyntaxError('Syntax error while compiling from string, details: '.$e->getMessage(), 0, $e);
         }
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getName(): string
     {
@@ -55,7 +56,7 @@ class TwigCompiler extends AbstractCompiler implements ContentCompilerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function wouldHandle(string $extension = null, string $mime = null): bool
     {

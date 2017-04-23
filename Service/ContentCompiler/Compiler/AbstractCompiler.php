@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ContentCompilerBundle\Service\ContentCompiler\Compiler;
 
@@ -6,14 +8,12 @@ use ContentCompilerBundle\Service\ContentCompiler\ContentCompilerInterface;
 use ContentCompilerBundle\Service\ContentCompiler\ContentPurifierInterface;
 
 /**
- * AbstractCompiler
- *
- * @package Wolnosciowiec\AppBundle\Service\ContentCompiler
+ * AbstractCompiler.
  */
 abstract class AbstractCompiler implements ContentCompilerInterface
 {
     /**
-     * @var ContentPurifierInterface $purifier
+     * @var ContentPurifierInterface
      */
     private $purifier;
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Service\ContentCompiler\Compiler;
 
@@ -45,7 +47,7 @@ class TwigCompilerTest extends TestCase
             ->get('wolnosciowiec.contentcompiler.factory')
             ->getContentCompiler('twig')
             ->compileFromString($text, false, [
-                ContentCompilerInterface::VARIABLES => $variables
+                ContentCompilerInterface::VARIABLES => $variables,
             ]);
 
         $this->assertContains($expectedText, $result);

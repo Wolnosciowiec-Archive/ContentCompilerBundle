@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Service\ContentCompiler\Compiler;
 
@@ -17,12 +19,12 @@ class MarkdownCompilerTest extends TestCase
         return [
             [
                 '**bold text**',
-                '<strong>bold text</strong>'
+                '<strong>bold text</strong>',
             ],
 
             [
                 '- this is a list item',
-                '<li>this is a list item</li>'
+                '<li>this is a list item</li>',
             ],
         ];
     }
