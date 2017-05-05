@@ -42,13 +42,11 @@ class ContentPurifier implements ContentPurifierInterface
 
     private function closeOpenedTags(string $input): string
     {
-        if (class_exists('\Tidy')) {
-            $tidy = new \Tidy();
+        if (class_exists('\DOMDocument')) {
+            $doc = new \DOMDocument();
+            $doc->loadHTML($input);
 
-            return $tidy->repairString($input, [
-                'output-xml' => true,
-                'input-xml' => true
-            ]);
+            return $doc->saveHTML();
         }
 
         return $input;
