@@ -15,8 +15,10 @@ class ContentPurifier implements ContentPurifierInterface
      * @param string $input
      * @return string
      */
-    public function purify(string $input) : string
+    public function purify(string $input): string
     {
+        $input = $this->closeOpenedTags($input);
+
         return (new \HTMLPurifier())->purify($input);
     }
 
@@ -25,7 +27,7 @@ class ContentPurifier implements ContentPurifierInterface
      * @param bool $strict
      * @return string
      */
-    public function purifyExternalContent(string $input, bool $strict = false) : string
+    public function purifyExternalContent(string $input, bool $strict = false): string
     {
         $input = $this->_escapeExternalLinks($input);
 
@@ -38,12 +40,26 @@ class ContentPurifier implements ContentPurifierInterface
         return $input;
     }
 
+    private function closeOpenedTags(string $input): string
+    {
+        if (class_exists('\Tidy')) {
+            $tidy = new \Tidy();
+
+            return $tidy->repairString($input, [
+                'output-xml' => true,
+                'input-xml' => true
+            ]);
+        }
+
+        return $input;
+    }
+
     /**
      * @param string $html
      * @param string $skip
      * @return string
      */
-    private function _escapeExternalLinks(string $html, $skip = null) : string
+    private function _escapeExternalLinks(string $html, $skip = null): string
     {
         return preg_replace_callback(
             "#(<a[^>]+?)>#is", function ($mach) use ($skip) {

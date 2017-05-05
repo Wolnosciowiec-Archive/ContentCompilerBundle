@@ -21,6 +21,10 @@
         "phpunit/phpunit": "~6"
     },
 
+    "suggest": {
+        "ext-tidy": "For HTML purifying (closing opened tags)"
+    },
+
     "autoload": {
         "psr-4": {
             "ContentCompilerBundle\\": "",
