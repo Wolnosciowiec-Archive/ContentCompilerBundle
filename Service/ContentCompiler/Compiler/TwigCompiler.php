@@ -36,6 +36,8 @@ class TwigCompiler extends AbstractCompiler implements ContentCompilerInterface
             'cache' => $parameters[self::CACHE_DIR] ?? null,
         ]));
 
+        $twig->addExtension(new \Twig_Extension_Debug());
+
         try {
             return $twig->render('str', $parameters[self::VARIABLES] ?? []);
 

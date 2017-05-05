@@ -32,7 +32,7 @@ class ContentPurifier implements ContentPurifierInterface
         $input = $this->_escapeExternalLinks($input);
 
         if ($strict) {
-            // strip out images, as those could potentially break the layout
+            // normalizeDomainName out images, as those could potentially break the layout
             // and could be a vector of possible attack or privacy break
             $input = preg_replace("/<img[^>]+\>/i", "", $input);
         }
