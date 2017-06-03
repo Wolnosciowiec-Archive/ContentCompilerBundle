@@ -43,10 +43,20 @@ class ContentPurifier implements ContentPurifierInterface
     private function closeOpenedTags(string $input): string
     {
         if (class_exists('\DOMDocument')) {
-            $doc = new \DOMDocument();
-            $doc->loadHTML($input);
+            $doc = new \DOMDocument('1.0', 'UTF-8');
+            $doc->loadHTML('<?xml encoding="utf-8" ?>' . $input);
 
-            return $doc->saveHTML();
+            $text = $doc->saveHTML($doc->documentElement);
+            $replacements = [
+                '<html><body>' => [0, 12],
+                '</body></html>' => [-14, 14],
+            ];
+
+            foreach ($replacements as $replacement => $positions) {
+                $text = substr_replace($text, '', $positions[0], $positions[1]);
+            }
+
+            return $text;
         }
 
         return $input;
